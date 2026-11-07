@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #080b16;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .dashboard {
+            width: 350px;
+            max-width: 85%;
+            padding: 40px;
+            background: #121628;
+            border-radius: 20px;
+            border: 1px solid #30364c;
+        }
+
+        h1 {
+            color: #a78bfa;
+        }
+
+        .email {
+            color: #a5acc0;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        button:hover {
+            background: #7c3aed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <h1 id="welcome">Welcome! 🎉</h1>
+
+        <p>You have successfully logged in.</p>
+
+        <p class="email" id="userEmail"></p>
+
+        <button id="logoutButton">Logout</button>
+
+    </div>
+
+    <script type="module">
+
+        import { auth } from "./firebase.js";
+
+        import {
+            onAuthStateChanged,
+            signOut
+        } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+        const welcome = document.getElementById("welcome");
+        const userEmail = document.getElementById("userEmail");
+        const logoutButton = document.getElementById("logoutButton");
+
+        // Check login status
+        onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+
+                welcome.textContent = "Welcome, " +
+                    (user.displayName || "User") + "! 🎉";
+
+                userEmail.textContent = user.email;
+
+            } else {
+
+                window.location.href = "index.html";
+
+            }
+
+        });
+
+        // Logout functionality
+        logoutButton.addEventListener("click", async () => {
+
+            try {
+
+                await signOut(auth);
+
+                alert("You have logged out successfully!");
+
+                window.location.href = "index.html";
+
+            } catch (error) {
+
+                alert("Logout failed: " + error.message);
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
+
+

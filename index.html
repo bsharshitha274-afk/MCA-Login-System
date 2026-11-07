@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>Modern Login Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+    </div>
+
+    <main class="login-container">
+
+    
+
+        <div class="heading">
+            <h1>Welcome back</h1>
+            <p>Enter your details to access your account.</p>
+        </div>
+
+        <form id="loginForm">
+
+            <div class="input-group">
+                <label for="email">Email address</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                    autocomplete="username"
+                    required>
+            </div>
+
+            <div class="input-group">
+                <div class="password-heading">
+                    <label for="password">Password</label>
+                    <a href="#" id="forgotPassword">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <div class="password-wrapper">
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        minlength="8"
+                        required>
+
+                    <button type="button"
+                            id="togglePassword"
+                            class="eye-button"
+                            aria-label="Show password">
+                        ◉
+                    </button>
+                </div>
+            </div>
+
+            <div class="remember">
+                <label>
+                    <input type="checkbox" id="remember">
+                    <span>Remember me</span>
+                </label>
+            </div>
+
+            <p id="message" class="message"
+               role="status" aria-live="polite"></p>
+
+            <button type="submit" class="login-button">
+                Sign in <span>→</span>
+            </button>
+
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <p class="signup">
+    Don't have an account?
+    <a href="signup.html">Sign up</a>
+</p>
+
+        <p class="footer">
+            © 2026 NovaLogin. All rights reserved.
+        </p>
+
+    </main>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
